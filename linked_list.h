@@ -47,6 +47,11 @@ public:
 
     void setHead(ListNode* newHead) {
         head = newHead;
+        ListNode* current = head;
+        while (current != nullptr) {
+            len++;
+            current = current->getNext();
+        }
     }
 
     ListNode* get(int index) {
@@ -96,6 +101,13 @@ public:
 
     void operator+=(LinkedList& list2) {
         append(list2);
+    }
+
+    friend LinkedList operator+(LinkedList& list1, LinkedList& list2) {
+        LinkedList newList;
+        newList.setHead(list1.getHead());
+        newList.append(list2.getHead());
+        return newList;
     }
 
     ListNode* pop() {

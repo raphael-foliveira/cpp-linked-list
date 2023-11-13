@@ -20,10 +20,11 @@ int main() {
     }
     cout << "Popped: " << list1.pop()->getValue() << "\n";
 
-    list1 += list2;
+    LinkedList result = list1 + list2;
 
     cout << list1.length() << "\n";
     cout << list2.length() << "\n";
+    cout << result.length() << "\n";
 
     return 0;
 }
