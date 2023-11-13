@@ -94,6 +94,10 @@ public:
         list.setHead(nullptr);
     }
 
+    void operator+=(LinkedList& list2) {
+        append(list2);
+    }
+
     ListNode* pop() {
         if (head == nullptr) {
             return nullptr;
