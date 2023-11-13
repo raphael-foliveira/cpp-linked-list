@@ -47,6 +47,11 @@ public:
 
     void setHead(ListNode* newHead) {
         head = newHead;
+        ListNode* current = head;
+        while (current != nullptr) {
+            len++;
+            current = current->getNext();
+        }
     }
 
     ListNode* get(int index) {
@@ -92,6 +97,10 @@ public:
         }
         append(listHead);
         list.setHead(nullptr);
+    }
+
+    void operator+=(LinkedList& list2) {
+        append(list2);
     }
 
     ListNode* pop() {

@@ -20,9 +20,10 @@ int main() {
     }
     cout << "Popped: " << list1.pop()->getValue() << "\n";
 
-    list1.append(list2);
+    list2.append(list1);
 
     cout << list1.length() << "\n";
+    cout << list2.length() << "\n";
 
     return 0;
 }
