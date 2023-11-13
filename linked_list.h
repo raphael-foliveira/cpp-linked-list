@@ -103,13 +103,6 @@ public:
         append(list2);
     }
 
-    friend LinkedList operator+(LinkedList& list1, LinkedList& list2) {
-        LinkedList newList;
-        newList.setHead(list1.getHead());
-        newList.append(list2.getHead());
-        return newList;
-    }
-
     ListNode* pop() {
         if (head == nullptr) {
             return nullptr;
