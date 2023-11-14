@@ -26,4 +26,10 @@ public:
     void setNext(ListNode* newNext) {
         next = newNext;
     }
+
+    const char* toString() {
+        char* str = new char[10];
+        int b = sprintf(str, "%d", value);
+        return str;
+    }
 };

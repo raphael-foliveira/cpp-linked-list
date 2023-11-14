@@ -1,6 +1,7 @@
 #include "list_node.hpp"
 #include <iostream>
 #include <cstring>
+#include "./utils.hpp"
 using namespace std;
 
 class LinkedList {
@@ -100,6 +101,7 @@ public:
         }
         append(listHead);
         list.setHead(nullptr);
+        list.len = 0;
     }
 
     void operator+=(LinkedList& list2) {
@@ -113,6 +115,7 @@ public:
         if (head->getNext() == nullptr) {
             ListNode* popped = head;
             head = nullptr;
+            len--;
             return popped;
         }
         ListNode* current = head;
@@ -124,4 +127,21 @@ public:
         len--;
         return popped;
     }
+
+    const char* toString() {
+        const char* result = "";
+        ListNode* current = head;
+        result = concatenate(result, "[");
+        while (current != nullptr) {
+            const char* currentValueStr = current->toString();
+            result = concatenate(result, currentValueStr);
+            if (current->getNext() != nullptr) {
+                result = concatenate(result, ", ");
+            }
+            current = current->getNext();
+        }
+        result = concatenate(result, "]");
+        return result;
+    }
 };
+
