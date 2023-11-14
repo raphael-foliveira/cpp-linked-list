@@ -124,28 +124,4 @@ public:
         len--;
         return popped;
     }
-
-    const char* toString() {
-        if (head == nullptr) {
-            return "[]";
-        }
-        ListNode* current = head;
-        char* str = new char[12 * len + 2];
-        char* numberBuffer = new char[12];
-        int i = 0;
-        int startingPoint = i;
-        i += sprintf(str, "[");
-        while (current != nullptr) {
-            i += sprintf(numberBuffer, "%d", current->getValue());
-            i += sprintf(numberBuffer + i, ", ");
-            strcpy(str + startingPoint, numberBuffer);
-            cout << "str: " << numberBuffer << "\n";
-            startingPoint += i;
-            current = current->getNext();
-            cout << i << ":" << numberBuffer << "\n";
-            i = 0;
-        }
-        i += sprintf(numberBuffer, "]");
-        return str;
-    }
 };
