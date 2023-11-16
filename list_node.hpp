@@ -1,35 +1,25 @@
-
+#ifndef LIST_NODE_HPP
+#define LIST_NODE_HPP
 
 class ListNode {
     int value;
     ListNode* next;
 
 public:
-    ListNode() : value(0), next(nullptr) {}
+    ListNode();
 
-    ListNode(int value) : value(value), next(nullptr) {}
+    ListNode(int value);
 
-    ListNode(int value, ListNode* next) : value(value), next(next) {}
+    ListNode(int value, ListNode* next);
 
-    int getValue() {
-        return value;
-    }
+    int getValue();
 
-    void setValue(int newValue) {
-        value = newValue;
-    }
+    void setValue(int newValue);
 
-    ListNode* getNext() {
-        return next;
-    }
+    ListNode* getNext();
 
-    void setNext(ListNode* newNext) {
-        next = newNext;
-    }
+    void setNext(ListNode* newNext);
 
-    const char* toString() {
-        char* str = new char[10];
-        int b = sprintf(str, "%d", value);
-        return str;
-    }
+    const char* toString();
 };
+#endif
