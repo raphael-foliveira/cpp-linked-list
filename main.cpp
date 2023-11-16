@@ -6,7 +6,6 @@ int main() {
     LinkedList list1;
     LinkedList list2;
 
-
     for (int i = 0; i < 3; i++) {
         list1.append(new ListNode(3 * (i + 1)));
         list2.append(new ListNode(2 * (i + 1)));

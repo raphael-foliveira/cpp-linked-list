@@ -1,3 +1,6 @@
+#ifndef LINKED_LIST_HPP
+#define LINKED_LIST_HPP
+
 #include "list_node.hpp"
 #include <iostream>
 #include <cstring>
@@ -8,140 +11,34 @@ class LinkedList {
     ListNode* head;
     int len;
 
-    ListNode* getLast() {
-        if (head == nullptr) {
-            return nullptr;
-        }
-        ListNode* current = head;
-        while (current->getNext() != nullptr) {
-            current = current->getNext();
-        }
-        return current;
-    }
+    ListNode* getLast();
 
 public:
-    LinkedList() : head(nullptr) {
-        len = 0;
-    }
+    LinkedList();
 
-    LinkedList(ListNode* head) : head(head) {
-        ListNode* current = head;
-        while (current != nullptr) {
-            len++;
-            current = current->getNext();
-        }
-    }
+    LinkedList(ListNode* head);
 
-    ~LinkedList() {
-        ListNode* current = head;
-        while (current != nullptr) {
-            ListNode* next = current->getNext();
-            delete current;
-            current = next;
-        }
-    }
+    ~LinkedList();
 
-    int length() {
-        return len;
-    }
+    int length();
 
-    ListNode* getHead() {
-        return head;
-    }
+    ListNode* getHead();
 
-    void setHead(ListNode* newHead) {
-        head = newHead;
-        ListNode* current = head;
-        while (current != nullptr) {
-            len++;
-            current = current->getNext();
-        }
-    }
+    void setHead(ListNode* newHead);
 
-    ListNode* get(int index) {
-        if (index < 0) {
-            return get(length() + index);
-        }
-        if (index >= len) {
-            return nullptr;
-        }
-        ListNode* current = head;
-        for (int i = 0; i < index; i++) {
-            if (current == nullptr) {
-                return nullptr;
-            }
-            current = current->getNext();
-        }
-        return current;
-    }
+    ListNode* get(int index);
 
-    ListNode* operator[](int index) {
-        return get(index);
-    }
+    ListNode* operator[](int index);
 
-    void append(ListNode* listNode) {
-        if (head == nullptr) {
-            len++;
-            head = listNode;
-            return;
-        }
-        ListNode* current = getLast();
-        current->setNext(listNode);
-        while (current->getNext() != nullptr) {
-            current = current->getNext();
-            len++;
-        }
-    }
+    void append(ListNode* listNode);
 
-    void append(LinkedList& list) {
-        ListNode* listHead = list.getHead();
-        ListNode* last = getLast();
-        if (listHead == nullptr) {
-            return;
-        }
-        append(listHead);
-        list.setHead(nullptr);
-        list.len = 0;
-    }
+    void append(LinkedList& list);
 
-    void operator+=(LinkedList& list2) {
-        append(list2);
-    }
+    void operator+=(LinkedList& list2);
 
-    ListNode* pop() {
-        if (head == nullptr) {
-            return nullptr;
-        }
-        if (head->getNext() == nullptr) {
-            ListNode* popped = head;
-            head = nullptr;
-            len--;
-            return popped;
-        }
-        ListNode* current = head;
-        while (current->getNext()->getNext() != nullptr) {
-            current = current->getNext();
-        }
-        ListNode* popped = current->getNext();
-        current->setNext(nullptr);
-        len--;
-        return popped;
-    }
+    ListNode* pop();
 
-    const char* toString() {
-        const char* result = "";
-        ListNode* current = head;
-        result = concatenate(result, "[");
-        while (current != nullptr) {
-            const char* currentValueStr = current->toString();
-            result = concatenate(result, currentValueStr);
-            if (current->getNext() != nullptr) {
-                result = concatenate(result, ", ");
-            }
-            current = current->getNext();
-        }
-        result = concatenate(result, "]");
-        return result;
-    }
+    const char* toString();
 };
 
+#endif
